@@ -1,12 +1,12 @@
 <?php
   $host = 'localhost'; // conexão do bd
-    $user = 'root'; // usuário do bd
-    $pass = '123456'; // senha do bd
-    $banco = 'sistema_financeiro'; // nome do bd
+  $user = 'root'; // usuário do bd
+  $pass = '123456'; // senha do bd
+  $banco = 'sistema_financeiro'; // nome do bd
 
-    // variável responsável pela conexão com o bd
-    $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
-    mysql_select_db($banco) or die (mysql_error());
+  // variável responsável pela conexão com o bd
+  $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
+  mysql_select_db($banco) or die (mysql_error());
 ?>
 
 <!DOCTYPE html>
@@ -21,45 +21,35 @@
   </head>
   <body>
     <h1><center>Inserir Renda</center></h1>
+    
     <div class="container"> 
       <form class="form-horizontal well span6 offset3">
 
-
-          <div class="control-group">
-
-             <label class="control-label" for="inputDescricao">Descricao</label>
+        <div class="control-group">
+        
+          <label class="control-label" for="inputDescricao">Descricao</label>
           <div class="controls">
-
-              <input type="text" id="inputDescricaoRenda" name="descricaorenda" placeholder="Digite uma breve descricao sobre a sua renda">
+            <input type="text" id="inputDescricaoRenda" name="descricaorenda" placeholder="Digite uma breve descricao sobre a sua renda">
           </div>
 
-             <label class="control-label" for="inputValorRenda">Valor</label>
+          <label class="control-label" for="inputValorRenda">Valor</label>
           <div class="controls">
-
-              <input type="text" id="inputValorRenda" name="valorrenda" placeholder="Digite o valor da renda">
+            <input type="text" id="inputValorRenda" name="valorrenda" placeholder="Digite o valor da renda">
           </div>
 
-             <label class="control-label" for="inputdatalancamento">Data Lancamento</label>
+          <label class="control-label" for="inputdatalancamento">Data Lancamento</label>
           <div class="controls">
-
-              <input type="text" id="inputDataLancamento" name="datalancamento" placeholder="Digite a data do lancamento">
+            <input type="text" id="inputDataLancamento" name="datalancamento" placeholder="Digite a data do lancamento">
           </div>
-
              
-
-              
-          </div>
-
-
-
-
+        </div>
 
       </form>
 
-
-
     </div>
+    
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+  
   </body>
 </html>

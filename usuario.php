@@ -1,12 +1,12 @@
 <?php
 	$host = 'localhost'; // conexão do bd
-    $user = 'root'; // usuário do bd
-    $pass = '123456'; // senha do bd
-    $banco = 'sistema_financeiro'; // nome do bd
+  $user = 'root'; // usuário do bd
+  $pass = '123456'; // senha do bd
+  $banco = 'sistema_financeiro'; // nome do bd
 
-    // variável responsável pela conexão com o bd
-    $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
-    mysql_select_db($banco) or die (mysql_error());
+  // variável responsável pela conexão com o bd
+  $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
+  mysql_select_db($banco) or die (mysql_error());
 ?>
 
 <!DOCTYPE html>
@@ -24,57 +24,48 @@
 
     <h1><center>Novo Usuario</center></h1>
 
-    <!--<div class="container"> 
-      <form class="form-horizontal well span6 offset3" method="post" action="cadastro.php">-->
+      <div class="container"> 
+        <form class="form-horizontal well span6 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+          
+          <!-- Entrada para o nome do usuário -->  
+          <label class="control-label" for="inputNome">Nome:</label>
+          <div class="controls">
+            <input type="text" id="inputNome" name="nome" placeholder="Digite seu nome">
+          </div>
 
-        <div class="container"> 
-          <form class="form-horizontal well span6 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+          <!-- Entrada do email do usuário -->
+          <label class="control-label" for="inputEmail">Email:</label>
+          <div class="controls">
+            <input type="text" id="inputEmail" name="email" placeholder="Digite seu email">
+          </div>
 
-            <div class="control-group">
+          <!-- Entrada da renda média do usuário -->
+          <label class="control-label" for="inputRenda">Renda Média:</label>
+          <div class="controls">
+            <input type="text" id="inputRenda" name="renda" placeholder="Digite sua renda média">
+          </div>
 
-              <label class="control-label" for="inputNome">Nome:</label>
-            <div class="controls">
+          <!-- Entrada para a senha do usuário -->
+          <label class="control-label" for="inputSenha">Senha:</label>
+          <div class="controls">
+            <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha">
+          </div>
 
-              <input type="text" id="inputNome" name="nome" placeholder="Digite seu nome">
-            </div>
-
-            <label class="control-label" for="inputEmail">Email:</label>
-            <div class="controls">
-
-              <input type="text" id="inputEmail" name="email" placeholder="Digite seu email">
-            </div>
-
-            <label class="control-label" for="inputRenda">Renda Média:</label>
-            <div class="controls">
-
-              <input type="text" id="inputRenda" name="renda" placeholder="Digite sua renda média">
-            </div>
-
-            <label class="control-label" for="inputSenha">Senha:</label>
-            <div class="controls">
-
-              <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha">
-            </div>
-
-            <label class="control-label" for="inputConfirmaSenha">Confirmar Senha:</label>
-            <div class="controls">
-
-              <input type="password" id="inputConfirmaSenha" name="confirmasenha" placeholder="ConfirmaSenha">
-            </div>
+          <!-- Entrada para a confirmação de senha do usuário -->
+          <label class="control-label" for="inputConfirmaSenha">Confirmar Senha:</label>
+          <div class="controls">
+            <input type="password" id="inputConfirmaSenha" name="confirmasenha" placeholder="ConfirmaSenha">
+          </div>
+          
+          <!-- Botões de cadastrar e limpar -->
+          <div class="controls">
+            <input type="submit" id="submitCadastro" name="enviar" placeholder="Cadastro" value="Cadastrar">
+            <input type="reset" id="limparCadastro" name="limpar" placeholder="Limpar" value="Limpar">
+          </div>
             
-            <div class="controls">
+        </form>
 
-              <input type="submit" id="submitCadastro" name="enviar" placeholder="Cadastro" value="Cadastrar">
-              <input type="reset" id="limparCadastro" name="limpar" placeholder="Limpar" value="Limpar">
-            </div>
-
-            
-          </form>
-        </div>
-
-      <!--</form>
-
-    </div>-->
+      </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
