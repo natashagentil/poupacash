@@ -10,7 +10,7 @@
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <title>Login Poupa Cash</title>
     <meta charset="UTF-8"/>
@@ -18,36 +18,38 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="media/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="media/bootstrap/css/bootstrap-responsive.min.css">
+    <!-- Estilo padrão-->
+    <link rel="stylesheet" type="text/css" href="estilo.css">
   </head>
   <body>
-    <h1><center>Login Poupa Cash</center></h1>
-
     <div class="container"> 
+      <h1 class="centro">Login Poupa Cash</h1>
+      <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+          <div class="control-group">
 
-      <form class="form-horizontal well span6 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
-
-          <!-- Entrada do login do usuário -->
-          <label class="control-label" for="inputEmail">Login:</label>
-          <div class="controls">
-              <input type="text" id="inputEmail" name="email" placeholder="Digite seu login">
+            <!-- Entrada do login do usuário -->
+            <label class="control-label" for="inputEmail">Login:</label>
+            <div class="controls">
+                <input type="text" id="inputEmail" name="email" placeholder="Digite seu login">
+            </div>
           </div>
-
-          <!-- Entrada para a senha do usuário -->
-          <label class="control-label" for="inputSenha">Senha:</label>
-          <div class="controls">
-              <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha">
+          <div class="control-group">
+              <!-- Entrada para a senha do usuário -->
+            <label class="control-label" for="inputSenha">Senha:</label>
+            <div class="controls">
+                <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha">
+            </div>
           </div>
-          
-          <!-- Botão de entrar -->
-          <label class="controls" for="semCadastro"><a href="usuario.php">Não possui cadastro?</a></label>
-          <div class="controls">
-              <input type="submit" id="logar" name="login" placeholder="logando" value="Entrar">
+          <div class="control-group">
+            <!-- Botão de entrar -->
+            <label class="controls" for="semCadastro"><a href="usuario.php">Não possui cadastro?</a></label>
+            <div class="controls">
+                <input type="submit" id="logar" name="login" placeholder="logando" class="btn btn-success" value="Entrar">
+            </div>
           </div>
           
       </form>
-
     </div>
-
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
