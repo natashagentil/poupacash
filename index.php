@@ -67,7 +67,7 @@
         // quantidade de linhas encontradas na tabela do bd que satisfazem a busca SELECT
         $row = mysql_num_rows($sql);
 		    
-        if($row > 0) {
+        if($row > 0 && ($email != null || $senha != null)) {
           // abrindo uma sessão com o usuário
           session_start();
 
