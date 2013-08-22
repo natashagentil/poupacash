@@ -2,7 +2,7 @@
 	$host = 'localhost'; // conexão do bd
   $user = 'root'; // usuário do bd
   $pass = '123456'; // senha do bd
-  $banco = 'sistema_financeiro'; // nome do bd
+  $banco = 'poupacash'; // nome do bd
 
   // variável responsável pela conexão com o bd
   $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
@@ -54,20 +54,29 @@
     <script src="js/bootstrap.min.js"></script>
 
     <?php
+      //estrutura de controle de decisão para validar as chamadas POST em uma mesmas página
       if (isset($_POST['login'])){
-        $email = $_POST['email'];
+        
+        // dados capturados pelo formulário
+        $email = $_POST['email']; 
         $senha = $_POST['senha'];
 
+        // comando sql SELECT
         $sql = mysql_query("SELECT * FROM Usuario WHERE email = '$email' and senha = '$senha'");
-		    $row = mysql_num_rows($sql);
+		    
+        // quantidade de linhas encontradas na tabela do bd que satisfazem a busca SELECT
+        $row = mysql_num_rows($sql);
 		    
         if($row > 0) {
+          // abrindo uma sessão com o usuário
           session_start();
+
+
           $_SESSION['email'] = $_POST['email'];
    		    $_SESSION['senha'] = $_POST['senha'];
    		    echo ("
             <script>
-              window.location.href = \"inserirrenda.html\";
+              window.location.href = \"menu.php\";
             </script>
           "); 
 		    } else {

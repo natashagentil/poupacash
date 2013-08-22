@@ -2,7 +2,7 @@
 	$host = 'localhost'; // conexão do bd
   $user = 'root'; // usuário do bd
   $pass = '123456'; // senha do bd
-  $banco = 'sistema_financeiro'; // nome do bd
+  $banco = 'poupacash'; // nome do bd
 
   // variável responsável pela conexão com o bd
   $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
@@ -10,7 +10,7 @@
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <title>Novo Cadastro</title>
     <meta charset="UTF-8"/>
@@ -73,6 +73,7 @@
           <div class="controls">
             <input type="submit" id="submitCadastro" name="enviar" placeholder="Cadastro" class="btn btn-primary" value="Cadastrar">
             <input type="reset" id="limparCadastro" name="limpar" placeholder="Limpar" class="btn btn-danger" value="Limpar">
+            <!--<input type="button" class="btn btn-danger" name"botao2" value="Sair" onclick="location.href='logout.php'">-->
           </div>
             
         </form>
