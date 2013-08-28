@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
   $host = 'localhost'; // conexão do bd
   $user = 'root'; // usuário do bd
   $pass = '123456'; // senha do bd
@@ -19,6 +20,26 @@
 
 
 
+=======
+	$host = 'localhost'; // conexão do bd
+	$user = 'root'; // usuário do bd
+	$pass = '123456'; // senha do bd
+	$banco = 'poupacash'; // nome do bd
+
+	// variável responsável pela conexão com o bd
+	$conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
+	mysql_select_db($banco) or die (mysql_error());
+?>
+
+<?php
+	session_start();
+	if(!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
+		header("Location: index.php");
+		exit;
+	}
+?>
+
+>>>>>>> 0297b06dded843734064aee000bd538c95338793
 <!DOCTYPE html>
 <html>
   <head>
@@ -26,6 +47,7 @@
     <meta charset="UTF-8"/>
   </head>
   <body>
+<<<<<<< HEAD
 
     //data-toggle="button"
 
@@ -46,6 +68,8 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     
+=======
+>>>>>>> 0297b06dded843734064aee000bd538c95338793
     
   </body>
 </html>
