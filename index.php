@@ -60,20 +60,14 @@
         // dados capturados pelo formulário
         $email = $_POST['email']; 
         $senha = $_POST['senha'];
-
         // comando sql SELECT
         $sql = mysql_query("SELECT * FROM Usuario WHERE email = '$email' and senha = '$senha'");
-<<<<<<< HEAD
-
-        // quantidade de linhas encontradas na tabela do bd que satisfazem a busca SELECT
-        $row = mysql_num_rows($sql);
-
-=======
-		    
+        
+        
         // quantidade de linhas encontradas na tabela do bd que satisfazem a busca SELECT
         $row = mysql_num_rows($sql);
 		    
->>>>>>> 0297b06dded843734064aee000bd538c95338793
+
         if($row > 0 && ($email != null || $senha != null)) {
           // abrindo uma sessão com o usuário
           session_start();
