@@ -17,10 +17,87 @@
   }
 ?>
 
+<?php
+
+// CRUD DA TABELA INSERIR RENDA
+
+  // CREATE
+ 
+
+  //$info = $_POST['contatos'];
+
+  //$data = json_decode(stripslashes($info));
+
+  $valor = $data->valor;
+  $data_recebimento = $data->data_recebimento;
+  
+
+  //consulta sql
+  // insere a informação da Renda
+  $query = sprintf("INSERT INTO Renda (valor, data_recebimento) values ('%s', '%s')",
+    mysql_real_escape_string($valor),
+    mysql_real_escape_string($data_recebimento),
+    
+
+  $rs = mysql_query($query);
+
+  echo json_encode(array(
+    "success" => mysql_errno() == 0,
+    "Renda" => array(
+      "valor" => $valor,
+      "data_recebimento" => $data_recebimento,
+      
+    )
+  ));
+
+  // DELETE
+
+  $id = $data->id;
+
+  //consulta sql
+  // exclui a informação do gasto
+  $query = sprintf("DELETE FROM Renda WHERE id=%d",
+    mysql_real_escape_string($id));
+
+  $rs = mysql_query($query);
+
+  echo json_encode(array(
+    "success" => mysql_errno() == 0
+  ));
+
+
+  // UPDATE
+
+  $valor = $data->valor;
+  $data_recebimento = $data->data_recebimento;
+  $id = $data->id;
+
+  //consulta sql no bd pra fazer o UPDATE
+  $query = sprintf("UPDATE Renda SET valor = '%s', data_recebimento = '%s',  WHERE id=%d",
+    mysql_real_escape_string($valor),
+    mysql_real_escape_string($data_recebimento),
+    mysql_real_escape_string($id));
+
+  $rs = mysql_query($query);
+
+  echo json_encode(array(
+    "success" => mysql_errno() == 0,
+    "contatos" => array(
+      "id" => $id,
+      "valor" => $valor,
+      "data_recebimento" => $data_recebimento,
+      
+    )
+  ));
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Inserir Renda</title>
+    <title>Renda</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -28,7 +105,7 @@
     <link rel="stylesheet" type="text/css" href="media/bootstrap/css/bootstrap-responsive.min.css">
   </head>
   <body>
-    <h1><center>Inserir Renda</center></h1>
+    <h1><center>Renda</center></h1>
     
     <div class="container"> 
       <form class="form-horizontal well span6 offset3">

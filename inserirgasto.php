@@ -17,6 +17,84 @@
   }
 ?>
 
+<?php
+
+// CRUD DA TABELA INSERIR GASTOS
+
+  // CREATE
+
+  //$info = $_POST['contatos'];
+
+  //$data = json_decode(stripslashes($info));
+
+ 
+  $descricao = $data->descricao;
+  $valor_medio = $data->valor_medio;
+  $data_base_pgto = $data->data_base_pgto;
+
+  //consulta sql
+  // insere a informação do Gasto
+  $query = sprintf("INSERT INTO Gasto (descricao, valor_medio, data_base_pgto) values ('%s', '%s', '%s')",
+    mysql_real_escape_string($descricao),
+    
+
+  $rs = mysql_query($query);
+
+  echo json_encode(array(
+    "success" => mysql_errno() == 0,
+    "Gasto" => array(
+      "descricao" => $descricao,
+      "valor_medio" => $valor_medio,
+      "data_base_pgto" => $data_base_pgto
+    )
+  ));
+
+  // DELETE
+
+  $id = $data->id;
+
+  //consulta sql
+  // exclui a informação do gasto
+  $query = sprintf("DELETE FROM Gasto WHERE id=%d",
+    mysql_real_escape_string($id));
+
+  $rs = mysql_query($query);
+
+  echo json_encode(array(
+    "success" => mysql_errno() == 0
+  ));
+
+
+  // UPDATE
+
+  $descricao = $data->descricao;
+  $valor_medio = $data->valor_medio;
+  $data_base_pgto = $data->data_base_pgto;
+  $id = $data->id;
+
+  //consulta sql no bd pra fazer o UPDATE
+  $query = sprintf("UPDATE Gasto SET descricao = '%s', valor_medio = '%s', data_base_pgto = '%s' WHERE id=%d",
+    mysql_real_escape_string($descricao),
+    mysql_real_escape_string($valor_medio),
+    mysql_real_escape_string($data_base_pgto),
+    mysql_real_escape_string($id));
+
+  $rs = mysql_query($query);
+
+  echo json_encode(array(
+    "success" => mysql_errno() == 0,
+    "contatos" => array(
+      "id" => $id,
+      "descricao" => $descricao,
+      "valor_medio" => $valor_medio,
+      "data_base_pgto" => $data_base_pgto
+    )
+  ));
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
