@@ -1,5 +1,5 @@
 <?php
-	$host = 'localhost'; // conexão do bd
+  $host = 'localhost'; // conexão do bd
   $user = 'root'; // usuário do bd
   $pass = '123456'; // senha do bd
   $banco = 'poupacash'; // nome do bd
@@ -63,29 +63,36 @@
 
         // comando sql SELECT
         $sql = mysql_query("SELECT * FROM Usuario WHERE email = '$email' and senha = '$senha'");
+<<<<<<< HEAD
+
+        // quantidade de linhas encontradas na tabela do bd que satisfazem a busca SELECT
+        $row = mysql_num_rows($sql);
+
+=======
 		    
         // quantidade de linhas encontradas na tabela do bd que satisfazem a busca SELECT
         $row = mysql_num_rows($sql);
 		    
+>>>>>>> 0297b06dded843734064aee000bd538c95338793
         if($row > 0 && ($email != null || $senha != null)) {
           // abrindo uma sessão com o usuário
           session_start();
 
 
           $_SESSION['email'] = $_POST['email'];
-   		    $_SESSION['senha'] = $_POST['senha'];
-   		    echo ("
+          $_SESSION['senha'] = $_POST['senha'];
+          echo ("
             <script>
               window.location.href = \"menu.php\";
             </script>
           "); 
-		    } else {
+        } else {
           echo ("
           <script>
             alert(\"Erro de conexão \\nLogin/Senha não existentes\");
           </script>
         ");
-		    }
+        }
       }
 
     ?>

@@ -1,5 +1,5 @@
 <?php
-	$host = 'localhost'; // conexão do bd
+  $host = 'localhost'; // conexão do bd
   $user = 'root'; // usuário do bd
   $pass = '123456'; // senha do bd
   $banco = 'poupacash'; // nome do bd
