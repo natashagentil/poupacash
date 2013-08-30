@@ -1,12 +1,30 @@
 <?php
-  $host = 'localhost'; // conexão do bd
-  $user = 'root'; // usuário do bd
-  $pass = '123456'; // senha do bd
-  $banco = 'poupacash'; // nome do bd
+    require_once 'config/conexao.class.php';
+    require_once 'config/crud.class.php';
 
-  // variável responsável pela conexão com o bd
-  $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
-  mysql_select_db($banco) or die (mysql_error());
+    $con = new conexao(); // instancia classe de conxao
+    $con->connect(); // abre conexao com o banco
+   
+    if(isset ($_POST['enviar'])){  // caso nao seja passado o id via GET cadastra
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+        $renda = (float) $_POST['renda'];
+        $confirmasenha = $_POST['confirmasenha'];
+        
+        if($senha == $confirmasenha) {
+          $crud = new crud('Usuario');  // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
+          $crud->inserir("nome, email, senha, media_renda", "'$nome', '$email', '$senha', '$renda'"); // utiliza a funçao INSERIR da classe crud
+          header("Location: index.php"); // redireciona para a listagem
+        } else {
+          echo ("
+          <script>
+            alert(\"Senha não confere.\");
+          </script>
+        ");
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +51,7 @@
             <!-- Entrada para o nome do usuário -->  
             <label class="control-label" for="inputNome">Nome:</label>
             <div class="controls">
-              <input type="text" id="inputNome" name="nome" placeholder="Digite seu nome">
+              <input type="text" id="inputNome" name="nome" placeholder="Digite seu nome" value="<?php echo @$campo['nome']; ?>" >
             </div>
           </div>
 
@@ -41,7 +59,7 @@
             <!-- Entrada do email do usuário -->
             <label class="control-label" for="inputEmail">Email:</label>
             <div class="controls">
-              <input type="text" id="inputEmail" name="email" placeholder="Digite seu email">
+              <input type="text" id="inputEmail" name="email" placeholder="Digite seu email" value="<?php echo @$campo['email']; ?>">
             </div>
           </div>
 
@@ -49,7 +67,7 @@
             <!-- Entrada da renda média do usuário -->
             <label class="control-label" for="inputRenda">Renda Média:</label>
             <div class="controls">
-              <input type="text" id="inputRenda" name="renda" placeholder="Digite sua renda média">
+              <input type="text" id="inputRenda" name="renda" placeholder="Digite sua renda média" value="<?php echo @$campo['renda']; ?>">
             </div>
           </div>
 
@@ -57,7 +75,7 @@
             <!-- Entrada para a senha do usuário -->
             <label class="control-label" for="inputSenha">Senha:</label>
             <div class="controls">
-              <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha">
+              <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha" value="<?php echo @$campo['senha']; ?>">
             </div>
           </div>
 
@@ -82,33 +100,5 @@
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
-    <?php
-      if (isset($_POST['enviar'])){
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $renda = (float) $_POST['renda'];
-        $confirmasenha = $_POST['confirmasenha'];
-
-        if($senha == $confirmasenha) {
-          $sql = mysql_query("INSERT INTO Usuario(nome, email, senha, media_renda) 
-          VALUES('$nome', '$email', '$senha', '$renda')");
-          echo ("
-          <script>
-            window.location.href = \"index.php\";
-          </script>
-          ");
-        } else {
-          echo ("
-          <script>
-            alert(\"Senha não confere.\");
-          </script>
-        ");
-        }
-         
-      }
-
-    ?>
   </body>
 </html>

@@ -1,12 +1,10 @@
 <?php
-  $host = 'localhost'; // conexão do bd
-  $user = 'root'; // usuário do bd
-  $pass = '123456'; // senha do bd
-  $banco = 'poupacash'; // nome do bd
+    require_once 'config/conexao.class.php';
+    require_once 'config/crud.class.php';
 
-  // variável responsável pela conexão com o bd
-  $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
-  mysql_select_db($banco) or die (mysql_error());
+    $con = new conexao(); // instancia classe de conxao
+    $con->connect(); // abre conexao com o banco
+    
 ?>
 
 <?php
@@ -18,81 +16,17 @@
 ?>
 
 <?php
-
-// CRUD DA TABELA GASTO
-
-  // CREATE
-
-  //$info = $_POST['contatos'];
-
-  //$data = json_decode(stripslashes($info));
-
- 
-  $descricao = $data->descricao;
-  $valor_medio = $data->valor_medio;
-  $data_base_pgto = $data->data_base_pgto;
-
-  //consulta sql
-  // insere a informação do Gasto
-  $query = sprintf("INSERT INTO Gasto (descricao, valor_medio, data_base_pgto) values ('%s', '%s', '%s')",
-    mysql_real_escape_string($descricao),
+  if(isset ($_POST['enviar'])){  // caso nao seja passado o id via GET cadastra
+        $descricao = $_POST['descricaogasto'];
+        $gasto = (float) $_POST['gasto'];
+        $data = $_POST['data'];
+        $id = (int) $_SESSION['id'];
+        
+        $crud = new crud('Gasto');  // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
+        $crud->inserir("descricao, valor_medio, data_base_pgto, TipoGasto_id_tipo_gasto", "'$descricao', '$gasto', '$data', '1'"); // utiliza a funçao INSERIR da classe crud
+        header("Location: menu.php"); // redireciona para a listagem
     
-
-  $rs = mysql_query($query);
-
-  echo json_encode(array(
-    "success" => mysql_errno() == 0,
-    "Gasto" => array(
-      "descricao" => $descricao,
-      "valor_medio" => $valor_medio,
-      "data_base_pgto" => $data_base_pgto
-    )
-  ));
-
-  // DELETE
-
-  $id = $data->id;
-
-  //consulta sql
-  // exclui a informação do gasto
-  $query = sprintf("DELETE FROM Gasto WHERE id=%d",
-    mysql_real_escape_string($id));
-
-  $rs = mysql_query($query);
-
-  echo json_encode(array(
-    "success" => mysql_errno() == 0
-  ));
-
-
-  // UPDATE
-
-  $descricao = $data->descricao;
-  $valor_medio = $data->valor_medio;
-  $data_base_pgto = $data->data_base_pgto;
-  $id = $data->id;
-
-  //consulta sql no bd pra fazer o UPDATE
-  $query = sprintf("UPDATE Gasto SET descricao = '%s', valor_medio = '%s', data_base_pgto = '%s' WHERE id=%d",
-    mysql_real_escape_string($descricao),
-    mysql_real_escape_string($valor_medio),
-    mysql_real_escape_string($data_base_pgto),
-    mysql_real_escape_string($id));
-
-  $rs = mysql_query($query);
-
-  echo json_encode(array(
-    "success" => mysql_errno() == 0,
-    "contatos" => array(
-      "id" => $id,
-      "descricao" => $descricao,
-      "valor_medio" => $valor_medio,
-      "data_base_pgto" => $data_base_pgto
-    )
-  ));
-
-
-
+    }
 ?>
 
 <!DOCTYPE html>
@@ -107,36 +41,44 @@
     <!-- Estilo padrão-->
     <link rel="stylesheet" type="text/css" href="estilo.css">
   </head>
-  <body>
-        
-      
-          
+  <body>     
     <h1><center>Inserir Gasto</center></h1>
     <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
-    <div class="container">
 
-      <form class="form-horizontal well span6 offset3">
-
-        <div class="control-group">
-        
-          <label class="control-label" for="inputDescricaogasto">Descricao</label>
-          <div class="controls">
-              <input type="text" id="inputDescricaoGasto" name="descricaogasto" placeholder="Digite uma breve descricao sobre seu gasto">
+    <div class="container"> 
+        <form class="form-horizontal well span6 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+          
+          <div class="control-group">
+            <!-- Entrada para o valor da renda do usuário -->  
+            <label class="control-label" for="inputDescricaogasto">Descricao:</label>
+            <div class="controls">
+              <input type="text" id="inputDescricaoGasto" name="descricaogasto" placeholder="Digite uma breve descricao sobre seu gasto" value="<?php echo @$campo['descricao']; ?>" >
+            </div>
           </div>
 
-          <label class="control-label" for="inputValorGasto">Valor</label>
-          <div class="controls">
-              <input type="text" id="inputValorGasto" name="valorgasto" placeholder="Digite o valor do gasto">
+          <div class="control-group">
+            <!-- Entrada para o valor da renda do usuário -->  
+            <label class="control-label" for="inputValorGasto">Valor:</label>
+            <div class="controls">
+              <input type="text" id="inputValorRenda" name="gasto" placeholder="Digite o valor do gasto" value="<?php echo @$campo['valor_medio']; ?>" >
+            </div>
           </div>
 
-          <label class="control-label" for="inputDataPgto">Data Pagamento</label>
-          <div class="controls">
-              <input type="text" id="inputdata_base_pgto" name="DataPgto" placeholder="Digite uma data base para o pagamento">
+          <div class="control-group">
+            <!-- Entrada da data da renda do usuário -->
+            <label class="control-label" for="inputDataPgto">Data Pagamento:</label>
+            <div class="controls">
+              <input type="text" id="inputdata_base_pgto" name="data" placeholder="Digite uma data base para o pagamento" value="<?php echo @$campo['data_base_pgto']; ?>">
+            </div>
           </div>
-              
-        </div>
-
-      </form>
+          
+          <!-- Botões de cadastrar e limpar -->
+          <div class="controls">
+            <input type="submit" id="submitGasto" name="enviar" placeholder="Gasto" class="btn btn-primary" value="Inserir">
+            <input type="button" class="btn btn-danger" name"botao2" value="Sair" onclick="location.href='logout.php'">
+          </div>
+            
+        </form>
 
     </div>
 

@@ -1,12 +1,10 @@
 <?php
-  $host = 'localhost'; // conexão do bd
-  $user = 'root'; // usuário do bd
-  $pass = '123456'; // senha do bd
-  $banco = 'poupacash'; // nome do bd
+    require_once 'config/conexao.class.php';
+    require_once 'config/crud.class.php';
 
-  // variável responsável pela conexão com o bd
-  $conexao = mysql_connect($host, $user, $pass) or die (mysql_error());
-  mysql_select_db($banco) or die (mysql_error());
+    $con = new conexao(); // instancia classe de conxao
+    $con->connect(); // abre conexao com o banco
+    
 ?>
 
 <?php
@@ -20,7 +18,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login Poupa Cash</title>
+    <title>Menu Poupacash</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -32,7 +30,7 @@
   <body>
 
     <div class="container"> 
-      <h1 class="centro">Menu Poupa Cash</h1>
+      <h1 class="centro">Menu Poupacash</h1>
       <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
           <div class="control-group centro">
 
