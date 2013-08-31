@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Menu Poupacash</title>
+    <title><?php echo $_SESSION['nome'];?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -41,7 +41,8 @@
           
           <div class="control-group centro">
             
-                <input type="submit" id="logar" name="login" placeholder="logando" class="btn-large btn-success" value="Visualizar Gastos">
+            <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-success" 
+              value="Visualizar Gastos" onclick="location.href='resultado.php'">
             
           </div>
 

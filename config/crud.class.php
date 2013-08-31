@@ -1,10 +1,6 @@
 <?php
 
-/** Classe CRUD - Create, Recovery, Update and Delete
-  * @author - Rodolfo Leonardo Medeiros
-  * @date - 25/09/2009
-  * Arquivo - codigo.class.php
-  * @package crud
+	/** Classe CRUD - Create, Recovery, Update and Delete
   */
   
   class crud
@@ -30,7 +26,6 @@
 	  * @method inserir
 	  * @param string $campos
 	  * @param string $valores
-	  * @example: $campos = "codigo, nome, email" e $valores = "1, 'João Brito', 'joao@joao.net'"
 	  * @return void
 	  */  		
 	public function inserir($campos, $valores) // funçao de inserçao, campos e seus respectivos valores como parametros
@@ -66,7 +61,6 @@
 	/** Método excluir
 	  * @method excluir
 	  * @param string $where
-	  * @example: $where = " codigo=2 AND nome='João' "
 	  * @return void
 	  */  		
 	public function excluir($where = NULL) // funçao de exclusao, campo que define a linha a ser editada como parametro

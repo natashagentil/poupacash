@@ -23,7 +23,7 @@
         $id = (int) $_SESSION['id'];
         
         $crud = new crud('Gasto');  // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
-        $crud->inserir("descricao, valor_medio, data_base_pgto, TipoGasto_id_tipo_gasto", "'$descricao', '$gasto', '$data', '1'"); // utiliza a funçao INSERIR da classe crud
+        $crud->inserir("descricao, valor_medio, data_base_pgto, TipoGasto_id_tipo_gasto", "'$descricao', '$gasto', '$data', '$id'"); // utiliza a funçao INSERIR da classe crud
         header("Location: menu.php"); // redireciona para a listagem
     
     }
@@ -32,7 +32,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gasto</title>
+    <title><?php echo $_SESSION['nome'];?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -75,6 +75,7 @@
           <!-- Botões de cadastrar e limpar -->
           <div class="controls">
             <input type="submit" id="submitGasto" name="enviar" placeholder="Gasto" class="btn btn-primary" value="Inserir">
+            <input type="button" class="btn btn-inverse" name"botao3" value="Voltar" onclick="location.href='menu.php'"><br /><br />
             <input type="button" class="btn btn-danger" name"botao2" value="Sair" onclick="location.href='logout.php'">
           </div>
             

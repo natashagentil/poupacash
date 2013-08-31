@@ -31,7 +31,7 @@
 <html>
  <html>
   <head>
-    <title>Renda</title>
+    <title><?php echo $_SESSION['nome'];?></title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -68,12 +68,13 @@
           <!-- Botões de cadastrar e limpar -->
           <div class="controls">
             <input type="submit" id="submitRenda" name="enviar" placeholder="Renda" class="btn btn-primary" value="Inserir">
+            <input type="button" class="btn btn-inverse" name"botao3" value="Voltar" onclick="location.href='menu.php'"><br /><br />
             <input type="button" class="btn btn-danger" name"botao2" value="Sair" onclick="location.href='logout.php'">
           </div>
             
         </form>
 
-      </div>
+    </div>
     
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
