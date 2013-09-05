@@ -32,13 +32,65 @@
     <link rel="stylesheet" type="text/css" href="estilo.css">
   </head>
   <body>     
-    <h1><center>Visualisar Gasto</center></h1>
-    <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <h1><center>Histórico Gasto</center></h1>
+    <form class="form-horizontal span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <div class="container">
+    <table class="table table-hover table-bordered span7">
+       
+            <tr>
+              <th>ID</th><th>Descrição</th><th>Valor</th><th>Data</th>
+            </tr>
+            <?php
+          $consulta = mysql_query("SELECT * FROM Gasto WHERE TipoGasto_id_tipo_gasto = '$id'"); // query que busca todos os dados da tabela PRODUTO
+          while($campo = mysql_fetch_array($consulta)){ // laço de repetiçao que vai trazer todos os resultados da consulta
+          $real = $campo['valor_medio'];
+          ?>
+            <tr>
+              <td><?php echo " $contador" ?></td>
+              <td><?php echo $campo['descricao']; ?></td>
+              <td><?php echo "R$ $real,00" ?></td>
+              <td><?php echo $campo['data_base_pgto']; ?></td>
+              <?php $gasto = $gasto + $campo['valor_medio']; $contador++;?>
+          <?php } ?>
+              <tr><td></td><td></td><td></td><th>Gasto Total: <?php echo "R$ $gasto,00";?></th></tr>
+              <?php
+          $consulta = mysql_query("SELECT * FROM Renda WHERE Usuario_id_usuario = '$id'"); // query que busca todos os dados da tabela PRODUTO
+          while($campo = mysql_fetch_array($consulta)){ // laço de repetiçao que vai trazer todos os resultados da consulta
+            $renda = $renda + $campo['valor'];
+          }
+
+          ?>
+          <tr><td></td><td></td><td></td><th><?php $renda = $renda - $gasto;?>
+          Renda Atual: <?php echo "R$$renda,00";?></th></tr>
+
+            </tr>
+            
+          <br />
+          
+            </table>
+            <!--<div class="form-horizontal well span5 offset3">
+            </h4>
+            <h4 style="clear:both;" class="offset1">
+              <?php
+          $consulta = mysql_query("SELECT * FROM Renda WHERE Usuario_id_usuario = '$id'"); // query que busca todos os dados da tabela PRODUTO
+          while($campo = mysql_fetch_array($consulta)){ // laço de repetiçao que vai trazer todos os resultados da consulta
+            $renda = $renda + $campo['valor'];
+          }
+          ?> 
+          <?php $renda = $renda - $gasto;?>
+          Renda Atual: <?php echo "R$$renda,00";?>
+            </h4>
+          </div>-->
+            <input type="button" class="btn btn-inverse" name"botao3" value="Voltar" onclick="location.href='menu.php'">
+          <input type="button" class="btn btn-danger" name"botao2" value="Sair" onclick="location.href='logout.php'">
+    </div>
+    </form>
+    <!--<form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
 
     <div class="container"> 
         
             
-        </form>
+
           
             <ul class="nav nav-list span4">
           <?php
@@ -70,7 +122,7 @@
           
 
     </div>
-    </form>
+    </form>-->
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     

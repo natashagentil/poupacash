@@ -30,7 +30,7 @@
   <body>
 
     <div class="container"> 
-      <h1 class="centro">Menu Poupacash</h1>
+      <h1 class="centro">Poupacash</h1>
       <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
           <div class="control-group centro">
 

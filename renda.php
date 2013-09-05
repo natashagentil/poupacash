@@ -23,7 +23,7 @@
         $crud = new crud('Renda');  // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
         $crud->inserir("valor, data_recebimento, Usuario_id_usuario", "'$renda', '$data', '$id'"); // utiliza a funçao INSERIR da classe crud
         header("Location: menu.php"); // redireciona para a listagem
-    
+        
     }
 ?>
 
