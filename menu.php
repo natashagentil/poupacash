@@ -26,24 +26,36 @@
     <link rel="stylesheet" type="text/css" href="media/bootstrap/css/bootstrap-responsive.min.css">
     <!-- Estilo padrão-->
     <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link rel="icon" type="image/png" href="img/icone.png" />
   </head>
   <body>
-
+    <div class="container offset4"> 
+      <img src="img/logo_poupacash.png" alt="Poupacash" />
+    </div>
     <div class="container"> 
-      <h1 class="centro">Poupacash</h1>
+      
       <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
           <div class="control-group centro">
 
-            <input type="button" class="btn-large btn-primary" name"gasto" value="Gasto" onclick="location.href='gasto.php'">
+            <input type="button" class="btn-large btn-warning" name"gasto" value="Gasto" onclick="location.href='gasto.php'">
             <input type="button" class="btn-large btn-info" name"renda" value="Renda" onclick="location.href='renda.php'">
            
           </div>
           
           <div class="control-group centro">
             
-            <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-success" 
-              value="Visualizar Gastos" onclick="location.href='resultado.php'">
+            <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-warning" 
+              value="Histórico Gasto" onclick="location.href='resultado.php'">
+
+            <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-info" 
+              value="Histórico Renda" onclick="location.href='resultado.php'">
             
+          </div>
+
+          <div class="control-group centro">
+            
+                
+                <input type="button" class="btn-large btn-primary" name"botao2" value="Balanço Geral" onclick="location.href='logout.php'">
           </div>
 
           <div class="control-group centro">

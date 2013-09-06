@@ -18,10 +18,14 @@
     <link rel="stylesheet" type="text/css" href="media/bootstrap/css/bootstrap-responsive.min.css">
     <!-- Estilo padrão-->
     <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link rel="icon" type="image/png" href="img/icone.png" />
   </head>
   <body>
+    <div class="container offset4"> 
+      <img src="img/logo_poupacash.png" alt="Poupacash" />
+    </div>
+    
     <div class="container"> 
-      <h1 class="centro">Login Poupacash</h1>
       <form class="form-horizontal well span5 offset3" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
           <div class="control-group">
 

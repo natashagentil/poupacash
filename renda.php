@@ -39,6 +39,7 @@
     <link rel="stylesheet" type="text/css" href="media/bootstrap/css/bootstrap-responsive.min.css">
     <!-- Estilo padrão-->
     <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link rel="icon" type="image/png" href="img/icone.png" />
   </head>
   
   <body>
