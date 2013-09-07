@@ -36,7 +36,7 @@
 			die ("<center>Erro na inclusão " . '<br>Linha: ' . __LINE__ . "<br>" . mysql_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
 		}else{
-			print "<script>location='index.php';</script>";
+			print "<script>location='menu.php';</script>";
 		}
 	}
 

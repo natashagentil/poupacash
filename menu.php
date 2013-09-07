@@ -1,18 +1,18 @@
 <?php
+  session_start();
+  if(!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
+    header("Location: index.php");
+    exit;
+  }
+?>
+
+<?php
     require_once 'config/conexao.class.php';
     require_once 'config/crud.class.php';
 
     $con = new conexao(); // instancia classe de conxao
     $con->connect(); // abre conexao com o banco
     
-?>
-
-<?php
-  session_start();
-  if(!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
-    header("Location: index.php");
-    exit;
-  }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@
               value="Histórico Gasto" onclick="location.href='resultado.php'">
 
             <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-info" 
-              value="Histórico Renda" onclick="location.href='resultado.php'">
+              value="Histórico Renda" onclick="location.href='historico_renda.php'">
             
           </div>
 

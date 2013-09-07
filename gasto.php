@@ -1,4 +1,12 @@
 <?php
+  session_start();
+  if(!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
+    header("Location: index.php");
+    exit;
+  }
+?>
+
+<?php
     require_once 'config/conexao.class.php';
     require_once 'config/crud.class.php';
 
@@ -7,13 +15,6 @@
     
 ?>
 
-<?php
-  session_start();
-  if(!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
-    header("Location: index.php");
-    exit;
-  }
-?>
 <?php
   $formaPagamento = "";
   if(isset ($_POST['check'])){
@@ -43,12 +44,10 @@
 
         $crud = new crud('FormaPagamento'); // instancia classe com as operações crud, passando nome da tabela como parametro
         $crud ->inserir("descricao, HistoricoGasto_id_historico_gasto", "'$formaPagamento', '$idGasto'");
-        header("Location: menu.php"); // redireciona para a listagem
+        //header("Location: menu.php"); // redireciona para a listagem
     
     }
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
