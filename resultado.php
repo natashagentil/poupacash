@@ -17,7 +17,8 @@
     $con = new conexao(); // instancia classe de conxao
     $con->connect(); // abre conexao com o banco
     
-?>
+    
+?>  
 
 <!DOCTYPE html>
 <html>
@@ -52,18 +53,24 @@
           $consulta = mysql_query("SELECT * FROM Gasto WHERE TipoGasto_id_tipo_gasto = '$id'"); // query que busca todos os dados da tabela PRODUTO
           while($campo = mysql_fetch_array($consulta)){ // laço de repetiçao que vai trazer todos os resultados da consulta
           $real = $campo['valor_medio'];
+
+          $source = $campo['data_base_pgto'];
+          $date = new DateTime($source);
           ?>
+
             <tr>
               <td><?php echo " $contador" ?></td>
               <td><?php echo $campo['descricao']; ?></td>
               <td><?php echo "R$ $real,00" ?></td>
-              <td><?php echo $campo['data_base_pgto']; ?></td>
+              <td><?php echo $date->format('d/m/Y'); ?></td>
               
               <td style="border:none;">
                 <a class="btn" href=""><i class="icon-pencil"></i></a>
               </td>
               <td style="border:none;">
-                <a class="btn" href="excluir_gasto.php?id=<?php echo $campo['id_gasto'];  //pega o campo ID para a exclusao ?>"><i class="icon-trash"></i></a>
+
+                  <a class="btn" href="excluir_gasto.php?id=<?php echo $campo['id_gasto'];  //pega o campo ID para a exclusao ?>"><i class="icon-trash"></i></a>
+                  
               </td>
               <td style="border:none;">
                 <a class="btn" href="#"><i class="icon-align-justify"></i></a>

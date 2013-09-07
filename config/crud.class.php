@@ -82,7 +82,8 @@
 			die ("<center>Erro na exclusão " . '<br>Linha: ' . __LINE__ . "<br>" .mysql_error() ."<br>
 				<a href='index.php'>Voltar ao Menu</a></center>" );
 		}else{
-			print "<center>Registro Excluído com Sucesso!<br><a href='index.php'>Voltar ao Menu</a></center>";
+			//print "<center>Registro Excluído com Sucesso!<br><a href='index.php'>Voltar ao Menu</a></center>";
+			header("Location: resultado.php");
 		}
 	  }else{
 			print "<center>Registro Não encontrado!<br><a href='index.php'>Voltar ao Menu</a></center>";
