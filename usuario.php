@@ -12,11 +12,12 @@
         $renda = (float) $_POST['renda'];
         $confirmasenha = $_POST['confirmasenha'];
         
-        if($senha == $confirmasenha) {
+        if($senha == $confirmasenha) { // se a senha for igual a confirmar senha, realiza toda a operação abaixo
           $crud = new crud('Usuario');  // instancia classe com as operaçoes crud, passando o nome da tabela como parametro
           $crud->inserir("nome, email, senha, media_renda", "'$nome', '$email', '$senha', '$renda'"); // utiliza a funçao INSERIR da classe crud
           header("Location: index.php"); // redireciona para a listagem
         } else {
+          // se os dados não estiverem certo, exibe uma mensagem de alerta
           echo ("
           <script>
             alert(\"Senha não confere.\");

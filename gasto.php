@@ -24,6 +24,7 @@
   }
   //$formaPagamento = $_POST['check'][0];
 ?>
+
 <?php
   if(isset ($_POST['enviar'])){  // caso nao seja passado o id via GET cadastra
         $descricao = $_POST['descricaogasto'];

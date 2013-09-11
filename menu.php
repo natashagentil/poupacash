@@ -45,7 +45,7 @@
           <div class="control-group centro">
             
             <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-warning" 
-              value="Histórico Gasto" onclick="location.href='resultado.php'">
+              value="Histórico Gasto" onclick="location.href='historico_gasto.php'">
 
             <input type="button" id="logar" name="login" placeholder="logando" class="btn-large btn-info" 
               value="Histórico Renda" onclick="location.href='historico_renda.php'">
@@ -55,7 +55,7 @@
           <div class="control-group centro">
             
                 
-                <input type="button" class="btn-large btn-primary" name"botao2" value="Balanço Geral" onclick="location.href='logout.php'">
+                <input type="button" class="btn-large btn-primary" name"botao2" value="Balanço Geral" onclick="location.href='balanco.php'">
           </div>
 
           <div class="control-group centro">

@@ -15,5 +15,5 @@
 
     $con->disconnect(); // fecha a conexao
 
-    //header("Location: resultado.php"); // redireciona para a listagem
+    //header("Location: historico_gasto.php"); // redireciona para a listagem
 ?>

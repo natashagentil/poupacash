@@ -2,7 +2,7 @@
     require_once 'config/conexao.class.php';
     require_once 'config/crud.class.php';
 
-    $con = new conexao(); // instancia classe de conxao
+    $con = new conexao(); // instancia classe de conexao
     $con->connect(); // abre conexao com o banco
     
 ?>
@@ -80,16 +80,19 @@
           session_start();
 
 
-          $_SESSION['email'] = $_POST['email'];
+          $_SESSION['email'] = $_POST['email']; // sessão é uma variável global, toda vez que chamamos o session, chamamos o email e o nome e id do usuario
           $_SESSION['senha'] = $_POST['senha'];
           $_SESSION['nome'] = $nome;
           $_SESSION['id'] = $id;
-          echo ("
+          // se os dados estiverem corretos, redireciona para a página menu
+          echo (" 
             <script>
-              window.location.href = \"menu.php\";
+              window.location.href = \"menu.php\"; 
             </script>
           "); 
         } else {
+
+          // se algo não estiver certo, exibe uma janela de erro de conexão
           echo ("
           <script>
             alert(\"Erro de conexão \\nLogin/Senha não existentes\");
